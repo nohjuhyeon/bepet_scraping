@@ -4,51 +4,86 @@ from email.mime.multipart import MIMEMultipart
 import os 
 from g2b_notice_check.g2b_notice import g2b_notice_collection
 from g2b_notice_check.g2b_preparation import g2b_preparation_collection
+import datetime
 
 def html_write(html_content, ai_list, check_list, notice_type, notice_type_eng):
     html_content += "<h3>{}: AI관련 공고 {}건, 확인이 필요한 공고 {}건이 올라왔습니다.</h3>".format(notice_type, len(ai_list), len(check_list))
-
     if len(ai_list) > 0:
-        html_content += "<h4>AI관련 공고 {}건</h4>".format(len(ai_list))
+        sorted_notices = sorted(ai_list,key=lambda x: datetime.datetime.strptime(x["{}_start_date".format(notice_type_eng)], "%Y/%m/%d"),reverse=True)
+        html_content += "<h4>AI관련 공고 {}건</h4>".format(len(sorted_notices))
         html_content += """
-        <table border='1' style='border-collapse: collapse; width: 100%; margin-bottom: 20px;'>
+        <table border='1' style='border-collapse: collapse; width: 80%; margin-bottom: 20px;'>
             <tr>
+                <th style='padding: 10px; width: 6%; text-align: center;'>번호</th>
                 <th style='padding: 10px; width: 30%; text-align: center;'>공고명</th>
-                <th style='padding: 10px; width: 30%; text-align: center;'>공고 기간</th>
-                <th style='padding: 10px; width: 15%; text-align: center;'>공고 기관</th>
-                <th style='padding: 10px; width: 15%; text-align: center;'>수요 기관</th>
-                <th style='padding: 10px; width: 10%; text-align: center;'>링크</th>
+                <th style='padding: 10px; width: 11%; text-align: center;'>추정 가격</th>
+                <th style='padding: 10px; width: 16%; text-align: center;'>공고 기관</th>
+                <th style='padding: 10px; width: 14%; text-align: center;'>공고 기간</th>
+                <th style='padding: 10px; width: 16%; text-align: center;'>수요 기관</th>
+                <th style='padding: 10px; width: 7%; text-align: center;'>링크</th>
             </tr>
         """
-        for i in ai_list:
-            html_content += "<tr>"
-            html_content += "<td style='padding: 10px; width: 30%; text-align: center;'>{}</td>".format(i['{}_title'.format(notice_type_eng)])
-            html_content += "<td style='padding: 10px; width: 30%; text-align: center;'>{} - {}</td>".format(i['{}_start_date'.format(notice_type_eng)], i['{}_end_date'.format(notice_type_eng)])
-            html_content += "<td style='padding: 10px; width: 15%; text-align: center;'>{}</td>".format(i['publishing_agency'])
-            html_content += "<td style='padding: 10px; width: 15%; text-align: center;'>{}</td>".format(i['requesting_agency'])
-            html_content += "<td style='padding: 10px; width: 10%; text-align: center;'><a href='{}'>바로가기</a></td>".format(i['{}_link'.format(notice_type_eng)])
+        list_count = 0 
+        for i in sorted_notices:
+            list_count += 1
+            if i['new_{}'.format(notice_type_eng)]==True:
+                html_content += "<tr style='background-color:  #e0f7fa; color: black;'>"
+                html_content += "<td style='padding: 10px; width: 6%; text-align: center;'><strong>{}</strong></td>".format(str(list_count)+'(new!)')
+                html_content += "<td style='padding: 10px; width: 30%; text-align: center;'><strong>{}</strong></td>".format(i['{}_title'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 11%; text-align: center;'><strong>{}</strong></td>".format(i['{}_price'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 16%; text-align: center;'><strong>{}</strong></td>".format(i['publishing_agency'])
+                html_content += "<td style='padding: 10px; width: 14%; text-align: center;'><strong>개시일 : {}<br>마감일 : {}</strong></td>".format(i['{}_start_date'.format(notice_type_eng)], i['{}_end_date'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 16%; text-align: center;'><strong>{}</strong></td>".format(i['requesting_agency'])
+                html_content += "<td style='padding: 10px; width: 7%; text-align: center;'><a href='{}'><strong>바로가기</strong></a></td>".format(i['{}_link'.format(notice_type_eng)])
+            else:                
+                html_content += "<tr>"
+                html_content += "<td style='padding: 10px; width: 6%; text-align: center;'>{}</td>".format(list_count)
+                html_content += "<td style='padding: 10px; width: 30%; text-align: center;'>{}</td>".format(i['{}_title'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 11%; text-align: center;'>{}</td>".format(i['{}_price'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 16%; text-align: center;'>{}</td>".format(i['publishing_agency'])
+                html_content += "<td style='padding: 10px; width: 14%; text-align: center;'>개시일 : {}<br>마감일 : {}</td>".format(i['{}_start_date'.format(notice_type_eng)], i['{}_end_date'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 16%; text-align: center;'>{}</td>".format(i['requesting_agency'])
+                html_content += "<td style='padding: 10px; width: 7%; text-align: center;'><a href='{}'>바로가기</a></td>".format(i['{}_link'.format(notice_type_eng)])
             html_content += "</tr>"
         html_content += "</table>"
 
     if len(check_list) > 0:
-        html_content += "<h4>확인이 필요한 공고 {}건</h4>".format(len(check_list))
+        sorted_notices = sorted(check_list,key=lambda x: datetime.datetime.strptime(x["{}_start_date".format(notice_type_eng)], "%Y/%m/%d"),reverse=True)
+
+        html_content += "<h4>확인이 필요한 공고 {}건</h4>".format(len(sorted_notices))
         html_content += """
-        <table border='1' style='border-collapse: collapse; width: 100%; margin-bottom: 20px;'>
+        <table border='1' style='border-collapse: collapse; width: 80%; margin-bottom: 20px;'>
             <tr>
+                <th style='padding: 10px; width: 6%; text-align: center;'>번호</th>
                 <th style='padding: 10px; width: 30%; text-align: center;'>공고명</th>
-                <th style='padding: 10px; width: 30%; text-align: center;'>공고 기간</th>
-                <th style='padding: 10px; width: 15%; text-align: center;'>공고 기관</th>
-                <th style='padding: 10px; width: 15%; text-align: center;'>수요 기관</th>
-                <th style='padding: 10px; width: 10%; text-align: center;'>링크</th>
+                <th style='padding: 10px; width: 11%; text-align: center;'>추정 가격</th>
+                <th style='padding: 10px; width: 16%; text-align: center;'>공고 기관</th>
+                <th style='padding: 10px; width: 14%; text-align: center;'>공고 기간</th>
+                <th style='padding: 10px; width: 16%; text-align: center;'>수요 기관</th>
+                <th style='padding: 10px; width: 7%; text-align: center;'>링크</th>
             </tr>
         """
-        for i in check_list:
-            html_content += "<tr>"
-            html_content += "<td style='padding: 10px; width: 30%; text-align: center;'>{}</td>".format(i['{}_title'.format(notice_type_eng)])
-            html_content += "<td style='padding: 10px; width: 30%; text-align: center;'>{} - {}</td>".format(i['{}_start_date'.format(notice_type_eng)], i['{}_end_date'.format(notice_type_eng)])
-            html_content += "<td style='padding: 10px; width: 15%; text-align: center;'>{}</td>".format(i['publishing_agency'])
-            html_content += "<td style='padding: 10px; width: 15%; text-align: center;'>{}</td>".format(i['requesting_agency'])
-            html_content += "<td style='padding: 10px; width: 10%; text-align: center;'><a href='{}'>바로가기</a></td>".format(i['{}_link'.format(notice_type_eng)])
+        list_count = 0 
+        for i in sorted_notices:
+            list_count += 1
+            if i['new_{}'.format(notice_type_eng)]==True:
+                html_content += "<tr style='background-color:  #e0f7fa; color: black;'>"
+                html_content += "<td style='padding: 5; width: 6%; text-align: center;'><strong>{}</strong></td>".format(str(list_count)+'(new!)')
+                html_content += "<td style='padding: 10px; width: 30%; text-align: center;'><strong>{}</strong></td>".format(i['{}_title'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 11%; text-align: center;'><strong>{}</strong></td>".format(i['{}_price'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 16%; text-align: center;'><strong>{}</strong></td>".format(i['publishing_agency'])
+                html_content += "<td style='padding: 10px; width: 14%; text-align: center;'><strong>개시일 : {}<br>마감일 : {}</strong></td>".format(i['{}_start_date'.format(notice_type_eng)], i['{}_end_date'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 16%; text-align: center;'><strong>{}</strong></td>".format(i['requesting_agency'])
+                html_content += "<td style='padding: 10px; width: 7%; text-align: center;'><a href='{}'><strong>바로가기</strong></a></td>".format(i['{}_link'.format(notice_type_eng)])
+            else:                
+                html_content += "<tr>"
+                html_content += "<td style='padding: 5; width: 6%; text-align: center;'>{}</td>".format(list_count)
+                html_content += "<td style='padding: 10px; width: 30%; text-align: center;'>{}</td>".format(i['{}_title'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 11%; text-align: center;'>{}</td>".format(i['{}_price'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 16%; text-align: center;'>{}</td>".format(i['publishing_agency'])
+                html_content += "<td style='padding: 10px; width: 14%; text-align: center;'>개시일 : {}<br>마감일 : {}</td>".format(i['{}_start_date'.format(notice_type_eng)], i['{}_end_date'.format(notice_type_eng)])
+                html_content += "<td style='padding: 10px; width: 16%; text-align: center;'>{}</td>".format(i['requesting_agency'])
+                html_content += "<td style='padding: 10px; width: 7%; text-align: center;'><a href='{}'>바로가기</a></td>".format(i['{}_link'.format(notice_type_eng)])
             html_content += "</tr>"
         html_content += "</table>"
     html_content += "<hr style='border: 1px solid black; margin: 20px 0;'>"
@@ -95,4 +130,4 @@ def email_sending():
     else:
         print('새로운 공고가 없습니다.')
 
-# email_sending()
+email_sending()

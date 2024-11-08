@@ -480,3 +480,215 @@ TypeError: 'list' object cannot be interpreted as an integer
 2024-11-08 12:49:24,745 - INFO - Added job "email_sending" to job store "default"
 2024-11-08 12:49:24,745 - INFO - Scheduler started
 2024-11-08 12:49:24,747 - INFO - Scheduler started...
+2024-11-08 13:00:00,270 - INFO - Running job "total_update (trigger: cron[hour='13', minute='0'], next run at: 2024-11-09 13:00:00 KST)" (scheduled at 2024-11-08 13:00:00+09:00)
+2024-11-08 13:00:02,620 - INFO - Job "total_update (trigger: cron[hour='13', minute='0'], next run at: 2024-11-09 13:00:00 KST)" executed successfully
+2024-11-08 13:09:27,732 - INFO - Scheduler has been shut down
+2024-11-08 13:09:27,752 - INFO - Scheduler shut down.
+2024-11-08 14:27:41,562 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:27:41,562 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:27:41,562 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:27:41,562 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:27:41,571 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:27:41,571 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:27:41,571 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:27:41,571 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 14:27:41,571 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 14:27:41,571 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 14:27:41,571 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 14:27:41,571 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 14:27:41,571 - INFO - Added job "total_update" to job store "default"
+2024-11-08 14:27:41,571 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 14:27:41,571 - INFO - Scheduler started
+2024-11-08 14:27:41,588 - INFO - Scheduler started...
+2024-11-08 14:35:52,987 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:35:52,987 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:35:52,987 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:35:52,987 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:35:52,987 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:35:52,987 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:35:52,987 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:35:52,987 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 14:35:53,003 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 14:35:53,003 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 14:35:53,003 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 14:35:53,003 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 14:35:53,003 - INFO - Added job "total_update" to job store "default"
+2024-11-08 14:35:53,003 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 14:35:53,003 - INFO - Scheduler started
+2024-11-08 14:35:53,003 - INFO - Scheduler started...
+2024-11-08 14:51:41,158 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:51:41,158 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:51:41,158 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:51:41,159 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:51:41,159 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:51:41,159 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:51:41,159 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 14:51:41,160 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 14:51:41,160 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 14:51:41,160 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 14:51:41,160 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 14:51:41,161 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 14:51:41,161 - INFO - Added job "total_update" to job store "default"
+2024-11-08 14:51:41,161 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 14:51:41,161 - INFO - Scheduler started
+2024-11-08 14:51:41,163 - INFO - Scheduler started...
+2024-11-08 15:02:28,719 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:02:28,719 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:02:28,719 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:02:28,719 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:02:28,719 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:02:28,719 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:02:28,719 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:02:28,719 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 15:02:28,719 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 15:02:28,719 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 15:02:28,727 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 15:02:28,728 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 15:02:28,728 - INFO - Added job "total_update" to job store "default"
+2024-11-08 15:02:28,728 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 15:02:28,728 - INFO - Scheduler started
+2024-11-08 15:02:28,732 - INFO - Scheduler started...
+2024-11-08 15:59:49,646 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:59:49,647 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:59:49,647 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:59:49,648 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:59:49,648 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:59:49,649 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:59:49,649 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 15:59:49,650 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 15:59:49,651 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 15:59:49,651 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 15:59:49,651 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 15:59:49,651 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 15:59:49,652 - INFO - Added job "total_update" to job store "default"
+2024-11-08 15:59:49,652 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 15:59:49,652 - INFO - Scheduler started
+2024-11-08 15:59:49,663 - INFO - Scheduler started...
+2024-11-08 16:06:15,494 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:06:15,494 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:06:15,495 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:06:15,495 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:06:15,495 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:06:15,495 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:06:15,495 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:06:15,497 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 16:06:15,497 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 16:06:15,497 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 16:06:15,497 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 16:06:15,497 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 16:06:15,497 - INFO - Added job "total_update" to job store "default"
+2024-11-08 16:06:15,497 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 16:06:15,497 - INFO - Scheduler started
+2024-11-08 16:06:15,500 - INFO - Scheduler started...
+2024-11-08 16:13:52,168 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:13:52,168 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:13:52,168 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:13:52,168 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:13:52,168 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:13:52,168 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:13:52,168 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 16:13:52,168 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 16:13:52,168 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 16:13:52,168 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 16:13:52,168 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 16:13:52,168 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 16:13:52,168 - INFO - Added job "total_update" to job store "default"
+2024-11-08 16:13:52,168 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 16:13:52,168 - INFO - Scheduler started
+2024-11-08 16:13:52,183 - INFO - Scheduler started...
+2024-11-08 17:02:55,179 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:02:55,180 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:02:55,181 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:02:55,182 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:02:55,182 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:02:55,182 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:02:55,182 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:02:55,184 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:02:55,184 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 17:02:55,184 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 17:02:55,185 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 17:02:55,185 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 17:02:55,185 - INFO - Added job "total_update" to job store "default"
+2024-11-08 17:02:55,187 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:02:55,187 - INFO - Scheduler started
+2024-11-08 17:02:55,200 - INFO - Scheduler started...
+2024-11-08 17:07:58,101 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:07:58,102 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:07:58,102 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:07:58,103 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:07:58,103 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:07:58,104 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:07:58,104 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:07:58,105 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:07:58,105 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 17:07:58,106 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 17:07:58,106 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 17:07:58,107 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 17:07:58,108 - INFO - Added job "total_update" to job store "default"
+2024-11-08 17:07:58,109 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:07:58,109 - INFO - Scheduler started
+2024-11-08 17:07:58,114 - INFO - Scheduler started...
+2024-11-08 17:11:01,732 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:11:01,732 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:11:01,732 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:11:01,732 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:11:01,732 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:11:01,732 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:11:01,732 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:11:01,732 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:11:01,737 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 17:11:01,737 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 17:11:01,737 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 17:11:01,737 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 17:11:01,737 - INFO - Added job "total_update" to job store "default"
+2024-11-08 17:11:01,737 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:11:01,737 - INFO - Scheduler started
+2024-11-08 17:11:01,737 - INFO - Scheduler started...
+2024-11-08 17:14:47,962 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:14:47,963 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:14:47,963 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:14:47,964 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:14:47,964 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:14:47,964 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:14:47,965 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:14:47,965 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:14:47,965 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 17:14:47,967 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 17:14:47,968 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 17:14:47,969 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 17:14:47,970 - INFO - Added job "total_update" to job store "default"
+2024-11-08 17:14:47,971 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:14:47,971 - INFO - Scheduler started
+2024-11-08 17:14:47,975 - INFO - Scheduler started...
+2024-11-08 17:23:34,052 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:23:34,054 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:23:34,054 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:23:34,055 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:23:34,055 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:23:34,055 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:23:34,056 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:23:34,057 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:23:34,057 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 17:23:34,058 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 17:23:34,058 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 17:23:34,058 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 17:23:34,059 - INFO - Added job "total_update" to job store "default"
+2024-11-08 17:23:34,059 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:23:34,059 - INFO - Scheduler started
+2024-11-08 17:23:34,078 - INFO - Scheduler started...
+2024-11-08 17:30:38,018 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:30:38,018 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:30:38,018 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:30:38,018 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:30:38,018 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:30:38,018 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:30:38,022 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 17:30:38,022 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:30:38,022 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 17:30:38,022 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 17:30:38,022 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 17:30:38,022 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 17:30:38,022 - INFO - Added job "total_update" to job store "default"
+2024-11-08 17:30:38,022 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 17:30:38,022 - INFO - Scheduler started
+2024-11-08 17:30:38,022 - INFO - Scheduler started...

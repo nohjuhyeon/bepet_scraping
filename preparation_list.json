@@ -5,10 +5,11 @@
         "preparation_price": "₩  132,305,600 (조달수수료 포함)",
         "publishing_agency": "조달청 서울지방조달청",
         "requesting_agency": "통일부",
-        "preparation_start_date": "2024/11/06 10:28",
-        "preparation_end_date": "2024/11/11 23:59",
+        "preparation_start_date": "2024/11/06",
+        "preparation_end_date": "2024/11/11",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1509517",
-        "type": "check"
+        "new_preparation": true,
+        "preparation_type": "check"
     },
     {
         "preparation_id": "122483038000001",
@@ -16,9 +17,11 @@
         "preparation_price": "₩  310,320,940 (조달수수료 포함)",
         "publishing_agency": "조달청 서울지방조달청",
         "requesting_agency": "서울신용보증재단",
-        "preparation_start_date": "2024/10/30 16:19",
-        "preparation_end_date": "2024/11/04 23:59",
-        "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1506779"
+        "preparation_start_date": "2024/10/30",
+        "preparation_end_date": "2024/11/04",
+        "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1506779",
+        "new_preparation": false,
+        "preparation_type": null
     },
     {
         "preparation_id": "122483022800001",
@@ -26,10 +29,11 @@
         "preparation_price": "₩  450,470,880 (조달수수료 포함)",
         "publishing_agency": "조달청 서울지방조달청",
         "requesting_agency": "서울신용보증재단",
-        "preparation_start_date": "2024/10/28 10:21",
-        "preparation_end_date": "2024/11/02 23:59",
+        "preparation_start_date": "2024/10/28",
+        "preparation_end_date": "2024/11/02",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1505287",
-        "type": "ai_preparation"
+        "new_preparation": false,
+        "preparation_type": "ai_preparation"
     },
     {
         "preparation_id": "계약팀-3735호",
@@ -37,10 +41,11 @@
         "preparation_price": "₩  508,845,000",
         "publishing_agency": "한국광해광업공단",
         "requesting_agency": "한국광해광업공단",
-        "preparation_start_date": "2024/10/18 09:28",
-        "preparation_end_date": "2024/10/23 23:59",
+        "preparation_start_date": "2024/10/18",
+        "preparation_end_date": "2024/10/23",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1501541",
-        "type": "ai_preparation"
+        "new_preparation": false,
+        "preparation_type": "ai_preparation"
     },
     {
         "preparation_id": "242440390300001",
@@ -48,10 +53,11 @@
         "preparation_price": "₩  242,347,400 (조달수수료 포함)",
         "publishing_agency": "조달청 광주지방조달청",
         "requesting_agency": "한국인터넷진흥원",
-        "preparation_start_date": "2024/10/15 09:23",
-        "preparation_end_date": "2024/10/20 23:59",
+        "preparation_start_date": "2024/10/15",
+        "preparation_end_date": "2024/10/20",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1499137",
-        "type": "ai_preparation"
+        "new_preparation": false,
+        "preparation_type": "ai_preparation"
     },
     {
         "preparation_id": "222443995500001",
@@ -59,10 +65,11 @@
         "preparation_price": "₩  151,450,000 (조달수수료 포함)",
         "publishing_agency": "조달청 인천지방조달청",
         "requesting_agency": "국립농업박물관",
-        "preparation_start_date": "2024/10/14 17:11",
-        "preparation_end_date": "2024/10/17 23:59",
+        "preparation_start_date": "2024/10/14",
+        "preparation_end_date": "2024/10/17",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1499408",
-        "type": "delete"
+        "new_preparation": false,
+        "preparation_type": null
     },
     {
         "preparation_id": "B2024-000131",
@@ -70,10 +77,11 @@
         "preparation_price": "₩  220,000,000",
         "publishing_agency": "한국과학기술정보연구원(분원)",
         "requesting_agency": "한국과학기술정보연구원(분원)",
-        "preparation_start_date": "2024/10/14 16:22",
-        "preparation_end_date": "2024/10/19 23:59",
+        "preparation_start_date": "2024/10/14",
+        "preparation_end_date": "2024/10/19",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1499268",
-        "type": "ai_preparation"
+        "new_preparation": false,
+        "preparation_type": "ai_preparation"
     },
     {
         "preparation_id": "122482844700001",
@@ -81,10 +89,11 @@
         "preparation_price": "₩  795,589,150 (조달수수료 포함)",
         "publishing_agency": "조달청 서울지방조달청",
         "requesting_agency": "한국지역정보개발원",
-        "preparation_start_date": "2024/10/14 14:41",
-        "preparation_end_date": "2024/10/19 23:59",
+        "preparation_start_date": "2024/10/14",
+        "preparation_end_date": "2024/10/19",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1499192",
-        "type": "check"
+        "new_preparation": false,
+        "preparation_type": "check"
     },
     {
         "preparation_id": "(입찰)2024-70",
@@ -92,10 +101,11 @@
         "preparation_price": "₩  161,000,000",
         "publishing_agency": "한국산업기술기획평가원",
         "requesting_agency": "한국산업기술기획평가원",
-        "preparation_start_date": "2024/10/14 10:44",
-        "preparation_end_date": "2024/10/19 23:59",
+        "preparation_start_date": "2024/10/14",
+        "preparation_end_date": "2024/10/19",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1499002",
-        "type": "check"
+        "new_preparation": false,
+        "preparation_type": "check"
     },
     {
         "preparation_id": "정보지원팀-1142",
@@ -103,9 +113,11 @@
         "preparation_price": "₩  587,000,000",
         "publishing_agency": "서울올림픽기념국민체육진흥공단 경륜경정총괄본부",
         "requesting_agency": "서울올림픽기념국민체육진흥공단 경륜경정총괄본부",
-        "preparation_start_date": "2024/11/06 09:47",
-        "preparation_end_date": "2024/11/11 23:59",
-        "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1509466"
+        "preparation_start_date": "2024/11/06",
+        "preparation_end_date": "2024/11/11",
+        "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1509466",
+        "new_preparation": false,
+        "preparation_type": "ai_preparation"
     },
     {
         "preparation_id": "분당서울대학교병원",
@@ -113,10 +125,11 @@
         "preparation_price": "₩  0",
         "publishing_agency": "분당서울대학교병원",
         "requesting_agency": "분당서울대학교병원",
-        "preparation_start_date": "2024/10/30 09:40",
-        "preparation_end_date": "2024/11/04 23:59",
+        "preparation_start_date": "2024/10/30",
+        "preparation_end_date": "2024/11/04",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1506392",
-        "type": "ai_preparation"
+        "new_preparation": false,
+        "preparation_type": "ai_preparation"
     },
     {
         "preparation_id": "교육역량정책과-10462",
@@ -124,10 +137,11 @@
         "preparation_price": "₩  300,000,000",
         "publishing_agency": "경기도교육청",
         "requesting_agency": "경기도교육청",
-        "preparation_start_date": "2024/10/16 10:33",
-        "preparation_end_date": "2024/10/19 23:59",
+        "preparation_start_date": "2024/10/16",
+        "preparation_end_date": "2024/10/19",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1500311",
-        "type": "ai_preparation"
+        "new_preparation": false,
+        "preparation_type": "ai_preparation"
     },
     {
         "preparation_id": "2024-10-16 09:27:27.0003881",
@@ -135,10 +149,11 @@
         "preparation_price": "₩  800,000,000",
         "publishing_agency": "국가철도공단",
         "requesting_agency": "국가철도공단",
-        "preparation_start_date": "2024/10/16 09:28",
-        "preparation_end_date": "2024/10/25 18:00",
+        "preparation_start_date": "2024/10/16",
+        "preparation_end_date": "2024/10/25",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1500250",
-        "type": "check"
+        "new_preparation": false,
+        "preparation_type": "check"
     },
     {
         "preparation_id": "W202400186",
@@ -146,9 +161,10 @@
         "preparation_price": "₩  102,687,222",
         "publishing_agency": "한국국제협력단",
         "requesting_agency": "한국국제협력단",
-        "preparation_start_date": "2024/10/10 17:00",
-        "preparation_end_date": "2024/10/15 18:00",
+        "preparation_start_date": "2024/10/10",
+        "preparation_end_date": "2024/10/15",
         "preparation_link": "https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo=1498114",
-        "type": "check"
+        "new_preparation": false,
+        "preparation_type": "check"
     }
 ]

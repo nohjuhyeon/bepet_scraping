@@ -12,13 +12,6 @@ from datetime import datetime
 
 load_dotenv()
 
-def move_files_to_folder(src_folder, dest_folder):
-    for file_name in os.listdir(src_folder):
-        src_file = os.path.join(src_folder, file_name)
-        dest_file = os.path.join(dest_folder, file_name)
-        if os.path.isfile(src_file):
-            shutil.move(src_file, dest_file)
-
 def notice_search(search_keyword,notice_list,notice_titles):
     # Chrome 브라우저 옵션 생성
     chrome_options = Options()
@@ -64,82 +57,84 @@ def notice_search(search_keyword,notice_list,notice_titles):
     for i in range(len(notice_elements)):
         notice_elements = browser.find_elements(by=By.CSS_SELECTOR,value='#w0 > table > tbody > tr > td:nth-child(2) > a')
         notice_title = notice_elements[i].text
-        if notice_title not in notice_titles:
-            notice_elements[i].click()
-            folder_path = os.path.join(download_folder_path, notice_title)
-            os.makedirs(folder_path, exist_ok=True)
-            notice_id = browser.find_element(by=By.CSS_SELECTOR,value='#basicInfo > table > tbody > tr:nth-child(1) > td:nth-child(4)').text
-            notice_price = browser.find_element(by=By.CSS_SELECTOR,value='#basicInfo > table > tbody > tr:nth-child(7) > td:nth-child(4) > b').text
-            notice_start_date = browser.find_element(by=By.CSS_SELECTOR,value='body > div> div > div.contents > div.left-content > table > tbody > tr:nth-child(3) > td:nth-child(4)').text
-            if notice_start_date != '':
-                notice_start_date = datetime.strptime(notice_start_date, "%Y년 %m월 %d일 %H시 %M분")
-                notice_start_date = notice_start_date.strftime("%Y/%m/%d %H:%M")
-            notice_end_date = browser.find_element(by=By.CSS_SELECTOR,value='body > div > div > div.contents > div.left-content > table > tbody > tr:nth-child(4) > td:nth-child(2) > span').text
-            if notice_end_date != '':
-                notice_end_date = datetime.strptime(notice_end_date, "%Y년 %m월 %d일 %H시 %M분")
-                notice_end_date = notice_end_date.strftime("%Y/%m/%d %H:%M")
-            publishing_agency = browser.find_element(by=By.CSS_SELECTOR,value='#basicInfo > table > tbody > tr:nth-child(3) > td:nth-child(4)').text.split('\n')[-1]
-            requesting_agency = browser.find_element(by=By.CSS_SELECTOR,value='#basicInfo > table > tbody > tr:nth-child(4) > td:nth-child(2)').text.split('\n')[-1]
+        notice_elements[i].click()
+        notice_id = browser.find_element(by=By.CSS_SELECTOR,value='#basicInfo > table > tbody > tr:nth-child(1) > td:nth-child(4)').text
+        notice_price = browser.find_element(by=By.CSS_SELECTOR,value='#basicInfo > table > tbody > tr:nth-child(7) > td:nth-child(4) > b').text
+        notice_start_date = browser.find_element(by=By.CSS_SELECTOR,value='body > div > div > div.contents > div.left-content > table > tbody > tr:nth-child(2) > td:nth-child(4)').text
+        if notice_start_date != '':
+            notice_start_date = datetime.strptime(notice_start_date, "%Y년 %m월 %d일")
+            notice_start_date = notice_start_date.strftime("%Y/%m/%d")
+        notice_end_date = browser.find_element(by=By.CSS_SELECTOR,value='body > div > div > div.contents > div.left-content > table > tbody > tr:nth-child(4) > td:nth-child(2) > span').text
+        if notice_end_date != '':
+            notice_end_date = datetime.strptime(notice_end_date, "%Y년 %m월 %d일 %H시 %M분")
+            notice_end_date = notice_end_date.strftime("%Y/%m/%d")
+        publishing_agency = browser.find_element(by=By.CSS_SELECTOR,value='#basicInfo > table > tbody > tr:nth-child(3) > td:nth-child(4)').text.split('\n')[-1]
+        requesting_agency = browser.find_element(by=By.CSS_SELECTOR,value='#basicInfo > table > tbody > tr:nth-child(4) > td:nth-child(2)').text.split('\n')[-1]
+        try:
+            notice_link = browser.find_element(by=By.CSS_SELECTOR,value='#contentBid > table > tbody > tr:nth-child(2) > td > span:nth-child(2)')
+            onclick_text = notice_link.get_attribute("onclick")
+            bid_id = onclick_text.split("g2bBidLink('")[1].split("'")[0]
+            notice_link = 'https://www.g2b.go.kr/pt/menu/selectSubFrame.do?framesrc=/pt/menu/frameTgong.do?url=https://www.g2b.go.kr:8101/ep/invitation/publish/bidInfoDtl.do?bidno='+bid_id
+        except:
             try:
-                notice_link = browser.find_element(by=By.CSS_SELECTOR,value='#contentBid > table > tbody > tr:nth-child(2) > td > span:nth-child(2)')
-                onclick_text = notice_link.get_attribute("onclick")
-                bid_id = onclick_text.split("g2bBidLink('")[1].split("'")[0]
-                notice_link = 'https://www.g2b.go.kr/pt/menu/selectSubFrame.do?framesrc=/pt/menu/frameTgong.do?url=https://www.g2b.go.kr:8101/ep/invitation/publish/bidInfoDtl.do?bidno='+bid_id
+                notice_link = browser.find_element(by=By.CSS_SELECTOR,value='#contentBid > table > tbody > tr > td > button')
+                onclick_attribute = notice_link.get_attribute("onclick")
+                # onclick 속성에서 링크 추출
+                start_index = onclick_attribute.find("http")
+                end_index = onclick_attribute.find("')", start_index)
+                notice_link = onclick_attribute[start_index:end_index]
             except:
-                try:
-                    notice_link = browser.find_element(by=By.CSS_SELECTOR,value='#contentBid > table > tbody > tr > td > button')
-                    onclick_attribute = notice_link.get_attribute("onclick")
-                    # onclick 속성에서 링크 추출
-                    start_index = onclick_attribute.find("http")
-                    end_index = onclick_attribute.find("')", start_index)
-                    notice_link = onclick_attribute[start_index:end_index]
-                except:
-                    notice_link = browser.find_element(by=By.CSS_SELECTOR,value='#contentBid > table > tbody > tr > td > a').get_attribute('href')
-                pass
-            dict_notice = {'notice_id':notice_id,'notice_title':notice_title,'notice_price':notice_price,'publishing_agency':publishing_agency,'requesting_agency':requesting_agency,'notice_start_date':notice_start_date,'notice_end_date':notice_end_date,'notice_link':notice_link}
-            notice_list.append(dict_notice)
-            file_list = []
+                notice_link = browser.find_element(by=By.CSS_SELECTOR,value='#contentBid > table > tbody > tr > td > a').get_attribute('href')
+            pass
+        if notice_title not in notice_titles:
+            new_notice=True
+        else:
+            new_notice=False
+        file_list = []
+        file_list = browser.find_elements(by=By.CSS_SELECTOR,value='#contentBid > table > tbody > tr:nth-child(1) > td > ul > li > a')
+        for j in range(len(file_list)):
             file_list = browser.find_elements(by=By.CSS_SELECTOR,value='#contentBid > table > tbody > tr:nth-child(1) > td > ul > li > a')
-            for j in range(len(file_list)):
-                file_list = browser.find_elements(by=By.CSS_SELECTOR,value='#contentBid > table > tbody > tr:nth-child(1) > td > ul > li > a')
-                browser.execute_script("arguments[0].scrollIntoView();", file_list[j]) 
-                time.sleep(1)
-                file_list[j].click()
-                time.sleep(2)
-            move_files_to_folder(download_folder_path, folder_path)    
-            back_btn = browser.find_element(by=By.CSS_SELECTOR, value='#top_wrap > div.top_btn > div.top-left_btn.pull-left > span')
-            back_btn.click()
+            browser.execute_script("arguments[0].scrollIntoView();", file_list[j]) 
             time.sleep(1)
+            file_list[j].click()
+            time.sleep(2)
+        notice_type = None
+        notice_type = check_list_insert(notice_type, download_folder_path)
+        keywords = ['AI', '인공지능', 'LLM','생성형']
+        notice_type = ai_notice_list_insert(notice_type, download_folder_path,keywords)
+        dict_notice = {'notice_id':notice_id,'notice_title':notice_title,'notice_price':notice_price,'publishing_agency':publishing_agency,'requesting_agency':requesting_agency,'notice_start_date':notice_start_date,'notice_end_date':notice_end_date,'notice_link':notice_link,'new_notice':new_notice,'notice_type':notice_type}
+        notice_list.append(dict_notice)
+        for filename in os.listdir(download_folder_path):
+            file_path = os.path.join(download_folder_path, filename)
+            try:
+                # 파일인지 확인하고 삭제
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+            except Exception as e:
+                print(f"Failed to delete {file_path}. Reason: {e}")
+        back_btn = browser.find_element(by=By.CSS_SELECTOR, value='#top_wrap > div.top_btn > div.top-left_btn.pull-left > span')
+        back_btn.click()
+        time.sleep(1)
+        
     browser.quit()
     return notice_list
-def move_folders_without_hwp(src_folder,notice_list):
+def check_list_insert(notice_type, download_folder_path):
     # check_list 폴더 경로 설정
-    dest_folder = os.path.join(src_folder, 'check_list')
-    # check_list 폴더가 없으면 생성
-    os.makedirs(dest_folder, exist_ok=True)
-    check_list = []
     # 공고 폴더들 탐색
-    for folder_name in os.listdir(src_folder):
-        folder_path = os.path.join(src_folder, folder_name)
-        
-        # 공고 폴더인지 확인 (check_list 폴더는 제외)
-        if os.path.isdir(folder_path) and folder_name not in ['ai_notice_list', 'check_list','delete_list']:
-            # 해당 폴더 안의 파일들 탐색
-            has_hwp_file = False
-            for file_name in os.listdir(folder_path):
-                if file_name.lower().endswith('.hwp'):
-                    has_hwp_file = True
-                    break            
-            # hwp 파일이 없으면 check_list로 이동
-            if not has_hwp_file:
-                for notice in notice_list:
-                    if notice['notice_title'] == folder_name:
-                        notice['type'] = 'check'
-                        check_list.append(notice)
-                        break
-                dest_path = os.path.join(dest_folder, folder_name)
-                shutil.move(folder_path, dest_path)
-    return notice_list,check_list
+    folder_path = os.path.join(download_folder_path)
+    
+    # 공고 폴더인지 확인 (check_list 폴더는 제외)
+    if os.path.isdir(folder_path):
+        # 해당 폴더 안의 파일들 탐색
+        has_hwp_file = False
+        for file_name in os.listdir(folder_path):
+            if file_name.lower().endswith('.hwp'):
+                has_hwp_file = True
+                break            
+        # hwp 파일이 없으면 check_list로 이동
+        if not has_hwp_file:
+            notice_type = 'check'
+    return notice_type
 import os
 import shutil
 import olefile
@@ -213,48 +208,18 @@ def search_keywords_in_hwp(file_name,file_path, keywords):
                 return True
     return False
 
-def move_folders_with_keywords(src_folder, keywords,notice_list):
+def ai_notice_list_insert(notice_type, download_folder_path,keywords):
     """공고 폴더 내 HWP 및 PDF 파일에서 키워드 검색 후 해당 폴더 이동"""
     # ai_notice_list 폴더 경로 설정
-    dest_folder = os.path.join(src_folder, 'ai_notice_list')
-    os.makedirs(dest_folder, exist_ok=True)
-    ai_notice_list = []
-
-    for folder_name in os.listdir(src_folder):
-        folder_path = os.path.join(src_folder, folder_name)
-        
-        # 폴더인지 확인 (ai_notice_list 및 check_list 폴더는 제외)
-        if os.path.isdir(folder_path) and folder_name not in ['ai_notice_list', 'check_list','delete_list']:
-            for file_name in os.listdir(folder_path):
-                file_path = os.path.join(folder_path, file_name)
-                if file_name.lower().endswith('.hwp'):
-                    if search_keywords_in_hwp(file_name,file_path, keywords):
-                        for notice in notice_list:
-                            if notice['notice_title'] == folder_name:
-                                ai_notice_list.append(notice)
-                                notice['type'] = 'ai_notice'
-                                break
-                        time.sleep(1)
-                        dest_path = os.path.join(dest_folder, folder_name)
-                        shutil.move(folder_path, dest_path)                        
-                        break
-    return notice_list,ai_notice_list
+    for file_name in os.listdir(download_folder_path):
+        file_path = os.path.join(download_folder_path, file_name)
+        if file_name.lower().endswith('.hwp'):
+            if search_keywords_in_hwp(file_name,file_path, keywords):
+                notice_type = 'ai_notice'
+                time.sleep(1)
+                break
+    return notice_type
                     
-def move_folder_to_delete(src_folder,notice_list):
-    dest_folder = os.path.join(src_folder, 'delete_list')
-    os.makedirs(dest_folder, exist_ok=True)
-    for folder_name in os.listdir(src_folder):
-        folder_path = os.path.join(src_folder, folder_name)        
-        # 폴더인지 확인 (ai_notice_list 및 check_list 폴더는 제외)
-        if os.path.isdir(folder_path) and folder_name not in ['ai_notice_list', 'check_list','delete_list']:
-            for notice in notice_list:
-                if notice['notice_title'] == folder_name:
-                    notice['type'] = 'delete'
-                    break
-            dest_path = os.path.join(dest_folder, folder_name)
-            shutil.move(folder_path, dest_path)                        
-    return notice_list
-
 import json
 
 def load_notice_titles_from_json(file_path):
@@ -278,32 +243,35 @@ def save_notice_list_to_json(notice_list, file_path):
         file_path: 저장할 JSON 파일 경로 (str)
     """
 
-    if os.path.exists(file_path):
-        # 파일이 이미 존재하는 경우, 기존 내용을 읽어옵니다.
-        with open(file_path, 'r', encoding='utf-8') as json_file:
-            existing_data = json.load(json_file)
-        # 기존 내용에 새로운 내용을 추가합니다.
-        existing_data.extend(notice_list)
-        # 업데이트된 내용을 다시 파일에 씁니다.
-        with open(file_path, 'w', encoding='utf-8') as json_file:
-            json.dump(existing_data, json_file, ensure_ascii=False, indent=4)
-    else:
+    # if os.path.exists(file_path):
+    #     # 파일이 이미 존재하는 경우, 기존 내용을 읽어옵니다.
+    #     with open(file_path, 'r', encoding='utf-8') as json_file:
+    #         existing_data = json.load(json_file)
+    #     # 기존 내용에 새로운 내용을 추가합니다.
+    #     existing_data.extend(notice_list)
+    #     # 업데이트된 내용을 다시 파일에 씁니다.
+    #     with open(file_path, 'w', encoding='utf-8') as json_file:
+    #         json.dump(existing_data, json_file, ensure_ascii=False, indent=4)
+    # else:
         # 파일이 없는 경우, 새로운 내용을 저장합니다.
-        with open(file_path, 'w', encoding='utf-8') as json_file:
-            json.dump(notice_list, json_file, ensure_ascii=False, indent=4)
+    with open(file_path, 'w', encoding='utf-8') as json_file:
+        json.dump(notice_list, json_file, ensure_ascii=False, indent=4)
 
 
 def g2b_notice_collection():
-    src_folder = 'C:/develops/bepet_scraping/notice_list'
-    keywords = ['AI', '인공지능', 'LLM','생성형']
     notice_list = []
     # 함수 호출
     notice_titles = load_notice_titles_from_json('C:/develops/bepet_scraping/notice_list.json')
     notice_list = notice_search('isp',notice_list,notice_titles)
     notice_list = notice_search('ismp',notice_list,notice_titles)
-    notice_list,check_list = move_folders_without_hwp(src_folder,notice_list)
-    notice_list,ai_notice_list = move_folders_with_keywords(src_folder, keywords,notice_list)
-    notice_list = move_folder_to_delete(src_folder,notice_list)
     json_file_path = os.path.join('C:/develops/bepet_scraping/', 'notice_list.json')
     save_notice_list_to_json(notice_list, json_file_path)
+    ai_notice_list = []
+    check_list = []
+    for notice in notice_list:
+        if notice['notice_type'] == 'ai_notice':
+            ai_notice_list.append(notice)
+        elif notice['notice_type'] == 'check':
+            check_list.append(notice)
+    time.sleep(1)
     return ai_notice_list,check_list

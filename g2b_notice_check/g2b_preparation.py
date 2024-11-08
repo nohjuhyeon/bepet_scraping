@@ -11,13 +11,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def move_files_to_folder(src_folder, dest_folder):
-    for file_name in os.listdir(src_folder):
-        src_file = os.path.join(src_folder, file_name)
-        dest_file = os.path.join(dest_folder, file_name)
-        if os.path.isfile(src_file):
-            shutil.move(src_file, dest_file)
-
 def preparation_search(search_keyword,preparation_list,preparation_titles):
     # Chrome 브라우저 옵션 생성
     chrome_options = Options()
@@ -45,73 +38,80 @@ def preparation_search(search_keyword,preparation_list,preparation_titles):
     click_btn.click()
     time.sleep(3)
     preparation_elements = browser.find_elements(by=By.CSS_SELECTOR, value='#container > div > table > tbody > tr > td:nth-child(4) > div > a')
-    preparation_title_list = []
     for i in range(len(preparation_elements)):
         preparation_elements = browser.find_elements(by=By.CSS_SELECTOR, value='#container > div > table > tbody > tr > td:nth-child(4) > div > a')
         preparation_title = preparation_elements[i].text
         preparation_link = preparation_elements[i].get_attribute('href')
         preparation_link = 'https://www.g2b.go.kr:8082/ep/preparation/prestd/preStdDtl.do?preStdRegNo='+preparation_link.split('\'')[1]
+        preparation_elements[i].click()
+        preparation_id = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(1) > td:nth-child(2) > div').text
+        preparation_price = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(3) > td:nth-child(2) > div').text
+        preparation_start_date = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(4) > td:nth-child(2) > div').text
+        if preparation_start_date != '':
+            preparation_start_date = preparation_start_date.split(' ')[0]
+        preparation_end_date = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(4) > td:nth-child(4) > div').text
+        if preparation_end_date != '':
+            preparation_end_date = preparation_end_date.split(' ')[0]
+        publishing_agency = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(5) > td > div').text.split('\n')[0]
+        requesting_agency = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(6) > td > div').text
         if preparation_title not in preparation_titles:
-            preparation_elements[i].click()
-            folder_path = os.path.join(download_folder_path, preparation_title)
-            os.makedirs(folder_path, exist_ok=True)
-            preparation_id = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(1) > td:nth-child(2) > div').text
-            preparation_price = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(3) > td:nth-child(2) > div').text
-            preparation_start_date = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(4) > td:nth-child(2) > div').text
-            preparation_end_date = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(4) > td:nth-child(4) > div').text
-            publishing_agency = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(5) > td > div').text.split('\n')[0]
-            requesting_agency = browser.find_element(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(6) > td > div').text
-            dict_preparation = {'preparation_id':preparation_id,'preparation_title':preparation_title,'preparation_price':preparation_price,'publishing_agency':publishing_agency,'requesting_agency':requesting_agency,'preparation_start_date':preparation_start_date,'preparation_end_date':preparation_end_date,'preparation_link':preparation_link}
-            preparation_list.append(dict_preparation)
+            new_preparation=True
+        else:
+            new_preparation=False
+        file_list = browser.find_elements(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(8) > td > div > a')
+        for j in range(len(file_list)):
             file_list = browser.find_elements(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(8) > td > div > a')
+            file_list[j].click()
+            time.sleep(3)
+        try:
+            browser.switch_to.frame('eRfpReqIframe')
+            file_list = browser.find_elements(by=By.CSS_SELECTOR,value='span > a')
             for j in range(len(file_list)):
-                file_list = browser.find_elements(by=By.CSS_SELECTOR,value='#container > div.section > table > tbody > tr:nth-child(8) > td > div > a')
+                file_list = browser.find_elements(by=By.CSS_SELECTOR,value='span > a')
                 file_list[j].click()
                 time.sleep(3)
+            browser.switch_to.default_content()
+        except:
+            pass
+        preparation_type = None
+        preparation_type = check_list_insert(preparation_type, download_folder_path)
+        keywords = ['AI', '인공지능', 'LLM','생성형']
+        preparation_type = ai_preparation_list_insert(preparation_type, download_folder_path,keywords)
+        dict_preparation = {'preparation_id':preparation_id,'preparation_title':preparation_title,'preparation_price':preparation_price,'publishing_agency':publishing_agency,'requesting_agency':requesting_agency,'preparation_start_date':preparation_start_date,'preparation_end_date':preparation_end_date,'preparation_link':preparation_link,'new_preparation':new_preparation,'preparation_type':preparation_type}
+        preparation_list.append(dict_preparation)
+        for filename in os.listdir(download_folder_path):
+            file_path = os.path.join(download_folder_path, filename)
             try:
-                browser.switch_to.frame('eRfpReqIframe')
-                file_list = browser.find_elements(by=By.CSS_SELECTOR,value='span > a')
-                for j in range(len(file_list)):
-                    file_list = browser.find_elements(by=By.CSS_SELECTOR,value='span > a')
-                    file_list[j].click()
-                    time.sleep(3)
-                browser.switch_to.default_content()
-            except:
-                pass
-            move_files_to_folder(download_folder_path, folder_path) 
-            back_btn = browser.find_element(by=By.CSS_SELECTOR, value='#container > div.button_wrap > div > a')
-            back_btn.click()
-            time.sleep(1)
+                # 파일인지 확인하고 삭제
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+            except Exception as e:
+                print(f"Failed to delete {file_path}. Reason: {e}")
+
+        back_btn = browser.find_element(by=By.CSS_SELECTOR, value='#container > div.button_wrap > div > a')
+        back_btn.click()
+        time.sleep(1)
     browser.quit()
     return preparation_list
-def move_folders_without_hwp(src_folder,preparation_list):
+
+def check_list_insert(preparation_type, download_folder_path):
     # check_list 폴더 경로 설정
-    dest_folder = os.path.join(src_folder, 'check_list')
-    # check_list 폴더가 없으면 생성
-    os.makedirs(dest_folder, exist_ok=True)
-    check_list = []
     # 공고 폴더들 탐색
-    for folder_name in os.listdir(src_folder):
-        folder_path = os.path.join(src_folder, folder_name)
-        
-        # 공고 폴더인지 확인 (check_list 폴더는 제외)
-        if os.path.isdir(folder_path) and folder_name not in ['ai_preparation_list', 'check_list','delete_list']:
-            # 해당 폴더 안의 파일들 탐색
-            has_hwp_file = False
-            for file_name in os.listdir(folder_path):
-                if file_name.lower().endswith('.hwp'):
-                    has_hwp_file = True
-                    break            
-            # hwp 파일이 없으면 check_list로 이동
-            if not has_hwp_file:
-                for preparation in preparation_list:
-                    if preparation['preparation_title'] == folder_name:
-                        preparation['type'] = 'check'
-                        check_list.append(preparation)
-                        break
-                dest_path = os.path.join(dest_folder, folder_name)
-                shutil.move(folder_path, dest_path)
-    return preparation_list,check_list
+    folder_path = os.path.join(download_folder_path)
+    
+    # 공고 폴더인지 확인 (check_list 폴더는 제외)
+    if os.path.isdir(folder_path):
+        # 해당 폴더 안의 파일들 탐색
+        has_hwp_file = False
+        for file_name in os.listdir(folder_path):
+            if file_name.lower().endswith('.hwp'):
+                has_hwp_file = True
+                break            
+        # hwp 파일이 없으면 check_list로 이동
+        if not has_hwp_file:
+            preparation_type = 'check'
+    return preparation_type
+
 import os
 import shutil
 import olefile
@@ -185,48 +185,18 @@ def search_keywords_in_hwp(file_name,file_path, keywords):
                 return True
     return False
 
-def move_folders_with_keywords(src_folder, keywords,preparation_list):
+def ai_preparation_list_insert(preparation_type, download_folder_path,keywords):
     """공고 폴더 내 HWP 및 PDF 파일에서 키워드 검색 후 해당 폴더 이동"""
-    # ai_preparation_list 폴더 경로 설정
-    dest_folder = os.path.join(src_folder, 'ai_preparation_list')
-    os.makedirs(dest_folder, exist_ok=True)
-    ai_preparation_list = []
-
-    for folder_name in os.listdir(src_folder):
-        folder_path = os.path.join(src_folder, folder_name)
-        
-        # 폴더인지 확인 (ai_preparation_list 및 check_list 폴더는 제외)
-        if os.path.isdir(folder_path) and folder_name not in ['ai_preparation_list', 'check_list','delete_list']:
-            for file_name in os.listdir(folder_path):
-                file_path = os.path.join(folder_path, file_name)
-                if file_name.lower().endswith('.hwp'):
-                    if search_keywords_in_hwp(file_name,file_path, keywords):
-                        for preparation in preparation_list:
-                            if preparation['preparation_title'] == folder_name:
-                                ai_preparation_list.append(preparation)
-                                preparation['type'] = 'ai_preparation'
-                                break
-                        time.sleep(1)
-                        dest_path = os.path.join(dest_folder, folder_name)
-                        shutil.move(folder_path, dest_path)                        
-                        break
-    return preparation_list,ai_preparation_list
+    # ai_notice_list 폴더 경로 설정
+    for file_name in os.listdir(download_folder_path):
+        file_path = os.path.join(download_folder_path, file_name)
+        if file_name.lower().endswith('.hwp'):
+            if search_keywords_in_hwp(file_name,file_path, keywords):
+                preparation_type = 'ai_preparation'
+                time.sleep(1)
+                break
+    return preparation_type
                     
-def move_folder_to_delete(src_folder,preparation_list):
-    dest_folder = os.path.join(src_folder, 'delete_list')
-    os.makedirs(dest_folder, exist_ok=True)
-    for folder_name in os.listdir(src_folder):
-        folder_path = os.path.join(src_folder, folder_name)        
-        # 폴더인지 확인 (ai_preparation_list 및 check_list 폴더는 제외)
-        if os.path.isdir(folder_path) and folder_name not in ['ai_preparation_list', 'check_list','delete_list']:
-            for preparation in preparation_list:
-                if preparation['preparation_title'] == folder_name:
-                    preparation['type'] = 'delete'
-                    break
-            dest_path = os.path.join(dest_folder, folder_name)
-            shutil.move(folder_path, dest_path)                        
-    return preparation_list
-
 import json
 
 def load_preparation_titles_from_json(file_path):
@@ -250,33 +220,36 @@ def save_preparation_list_to_json(preparation_list, file_path):
         file_path: 저장할 JSON 파일 경로 (str)
     """
 
-    if os.path.exists(file_path):
-        # 파일이 이미 존재하는 경우, 기존 내용을 읽어옵니다.
-        with open(file_path, 'r', encoding='utf-8') as json_file:
-            existing_data = json.load(json_file)
-        # 기존 내용에 새로운 내용을 추가합니다.
-        existing_data.extend(preparation_list)
-        # 업데이트된 내용을 다시 파일에 씁니다.
-        with open(file_path, 'w', encoding='utf-8') as json_file:
-            json.dump(existing_data, json_file, ensure_ascii=False, indent=4)
-    else:
-        # 파일이 없는 경우, 새로운 내용을 저장합니다.
-        with open(file_path, 'w', encoding='utf-8') as json_file:
-            json.dump(preparation_list, json_file, ensure_ascii=False, indent=4)
+    # if os.path.exists(file_path):
+    #     # 파일이 이미 존재하는 경우, 기존 내용을 읽어옵니다.
+    #     with open(file_path, 'r', encoding='utf-8') as json_file:
+    #         existing_data = json.load(json_file)
+    #     # 기존 내용에 새로운 내용을 추가합니다.
+    #     existing_data.extend(preparation_list)
+    #     # 업데이트된 내용을 다시 파일에 씁니다.
+    #     with open(file_path, 'w', encoding='utf-8') as json_file:
+    #         json.dump(existing_data, json_file, ensure_ascii=False, indent=4)
+    # else:
+    # 파일이 없는 경우, 새로운 내용을 저장합니다.
+    with open(file_path, 'w', encoding='utf-8') as json_file:
+        json.dump(preparation_list, json_file, ensure_ascii=False, indent=4)
 
 
 def g2b_preparation_collection():
-    src_folder = 'C:/develops/bepet_scraping/preparation_list'
-    keywords = ['AI', '인공지능', 'LLM','생성형']
     preparation_list = []
     # 함수 호출
     preparation_titles = load_preparation_titles_from_json('C:/develops/bepet_scraping/preparation_list.json')
     preparation_list = preparation_search('isp',preparation_list,preparation_titles)
     preparation_list = preparation_search('ismp',preparation_list,preparation_titles)
-    preparation_list,check_list = move_folders_without_hwp(src_folder,preparation_list)
-    preparation_list,ai_preparation_list = move_folders_with_keywords(src_folder, keywords,preparation_list)
-    preparation_list = move_folder_to_delete(src_folder,preparation_list)
     json_file_path = os.path.join('C:/develops/bepet_scraping/', 'preparation_list.json')
     save_preparation_list_to_json(preparation_list, json_file_path)
+    ai_preparation_list = []
+    check_list = []
+    for notice in preparation_list:
+        if notice['preparation_type'] == 'ai_preparation':
+            ai_preparation_list.append(notice)
+        elif notice['preparation_type'] == 'check':
+            check_list.append(notice)
+    time.sleep(1)
     return ai_preparation_list,check_list
 
