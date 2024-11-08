@@ -15,7 +15,7 @@ matplotlib
 seaborn
 scipy
 scikit-learn
-tensorflow 
+tensorflow
 wget
 konlpy
 pymongo
@@ -30,6 +30,7 @@ passlib[bcrypt]
 pydantic-settings
 xmltodict
 
-
-kss
-pytorch_lightning
+transformers==4.31.0
+tokenizers==0.13.3
+protobuf==3.20.*
+python-dotenv
