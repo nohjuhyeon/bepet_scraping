@@ -464,3 +464,19 @@ TypeError: 'list' object cannot be interpreted as an integer
 2024-11-08 12:47:23,563 - INFO - Job "ict_news (trigger: cron[hour='12', minute='45'], next run at: 2024-11-09 12:45:00 KST)" executed successfully
 2024-11-08 12:47:23,577 - INFO - Scheduler has been shut down
 2024-11-08 12:47:23,579 - INFO - Scheduler shut down.
+2024-11-08 12:49:24,736 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 12:49:24,738 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 12:49:24,738 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 12:49:24,739 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 12:49:24,740 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 12:49:24,741 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 12:49:24,741 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-08 12:49:24,742 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 12:49:24,743 - INFO - Added job "venture_doctors" to job store "default"
+2024-11-08 12:49:24,744 - INFO - Added job "statistic_bank" to job store "default"
+2024-11-08 12:49:24,744 - INFO - Added job "seoul_institute" to job store "default"
+2024-11-08 12:49:24,744 - INFO - Added job "ict_news" to job store "default"
+2024-11-08 12:49:24,745 - INFO - Added job "total_update" to job store "default"
+2024-11-08 12:49:24,745 - INFO - Added job "email_sending" to job store "default"
+2024-11-08 12:49:24,745 - INFO - Scheduler started
+2024-11-08 12:49:24,747 - INFO - Scheduler started...
